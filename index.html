@@ -1,18 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="style.css">
   <title>Rick Game</title>
 </head>
+
 <body>
-  
-
-
-
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-12"></div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-4">
+          <div id="tracker" class="tracker">
+          </div>
+        </div>
+        <div class="col-4 Rick m-1">
+          <img src="https://i.gifer.com/origin/bd/bd230cde4a6f31d2a9556b3ce3451b2c.gif" onclick="think()" alt="main">
+        </div>
+        <div class="col-4 buttons">
+          <div class="btn btn-primary" onclick="beer()">
+            <div id="beer-price"> 25 </div>
+            <i class="mdi mdi-thought-bubble"></i> Beer
+          </div>
+          <div class="btn btn-primary" onclick="scare()">
+            <div id="fear-price"> 50 </div>
+            <i class="mdi mdi-thought-bubble"></i>
+            <div>Scare</div>
+          </div>
+          <div class="btn btn-primary" onclick="getDrunk()">
+            <div id="wine-price"> 100 </div>
+            <i class="mdi mdi-thought-bubble"></i> Wine
+          </div>
+        </div>
+        <div class="btn btn-primary" onclick="chase()">
+          <div id="chase-price"> 350 </div>
+          <i class="mdi mdi-thought-bubble"></i>
+          Be Chased
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12"></div>
+    </div>
+    </div>
+  </main>
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12"></div>
+      </div>
+    </div>
+  </footer>
   <script src="main.js"></script>
 </body>
+
 </html>
