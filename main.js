@@ -1,54 +1,77 @@
 let trackerItems = {
-  ideas: 0,
-  fear: 0,
-  beers: 0,
-  drunk: 0,
-  urgency: 0,
+  idea: {
+    name: 'idea',
+    price: 0,
+    value: 0,
+    buffs: 1
+  },
+  fear: {
+    name: 'fears',
+    price: 50,
+    value: 0,
+    buffs: 5
+  },
+  beer: {
+    name: 'beer',
+    price: 25,
+    value: 0
+  },
+  wine: {
+    name: 'wine',
+    price: 100,
+    value: 0,
+    buffs: 0
+  },
+  chase: {
+    name: 'chase',
+    value: 0,
+    price: 350,
+    buffs: 10
+  },
+  historical: {
+    name: 'total idea',
+    price: 0,
+    value: 0,
+    buffs: 0
+  }
 }
-//make this a dictionary
-let prices = {
-  beer: 25,
-  fear: 50,
-  wine: 100,
-  chase: 350,
-}
-let buffs = {
-  beer: 2,
-  fear: 5,
-  chase: 10,
-}
-
+// debugger
 //main image
 //on click harvest a good idea
 //one idea per click
 function think() {
   drawTracker()
-  if (trackerItems.beers >= 1) {
-    (trackerItems.ideas += (trackerItems.beers*buffs.beer))
+  leveler()
+
+  if (trackerItems.beer.value >= 1) {
+    ((trackerItems.idea.value += (trackerItems.beer.value * trackerItems.beer.buffs)) && (trackerItems.historical.value += (trackerItems.beer.value * trackerItems.beer.buffs)))
   }
-  // if (trackerItems.beers >= 1 && trackerItems.scare >= 1) {
-  //   (trackerItems.ideas += (buffs.beer + buffs.fear))
+
+  // if (trackerItems.beer >= 1 && trackerItems.scare >= 1) {
+  //   (trackerItems.idea.value += (buffs.beer + trackerItems.fear.buffs))
   // }
-  // if (trackerItems.beers >= 1 && trackerItems.scare >= 1 && trackerItems.urgency) {
-  //   (trackerItems.ideas += (buffs.beer + buffs.fear + buffs.chase))
+  // if (trackerItems.beer >= 1 && trackerItems.scare >= 1 && trackerItems.chase) {
+  //   (trackerItems.idea.value += (buffs.beer + trackerItems.fear.buffs + buffs.chase))
   // }
-  if (trackerItems.scare >= 1) {
-    (trackerItems.ideas += trackerItems.fear*buffs.fear)
+  if (trackerItems.fear.value >= 1) {
+    ((trackerItems.idea.value += trackerItems.fear.value * trackerItems.fear.buffs) && (trackerItems.historical.value += trackerItems.fear.value * trackerItems.fear.buffs))
   }
-  if (trackerItems.urgency >= 1) {
-    (trackerItems.ideas += trackerItems.urgency*buffs.chase)
+  if (trackerItems.chase >= 1) {
+    ((trackerItems.idea.value += trackerItems.chase * buffs.chase) && (trackerItems.historical.value += trackerItems.chase * buffs.chase))
+
   }
-  trackerItems.ideas += 1
+  trackerItems.historical.value += trackerItems.idea.value
+  trackerItems.idea.value += trackerItems.idea.value
   console.log("idea click")
 }
 
 //multiplies think click rate by 2
-//costs 20 ideas
+//costs 20 idea
 // for every buy it adds 10% price increase
 function beer() {
-  trackerItems.ideas -= prices.beer
-  trackerItems.beers += 1
-  priceIncreaseBeer(prices.beer)
+  trackerItems.idea.value -= trackerItems.beer.price
+  trackerItems.beer.value += 1
+  priceIncreaseBeer(trackerItems.beer.price)
   drawTracker()
   // console.log ("multiplied by two per click", 2)
 }
@@ -56,29 +79,29 @@ function beer() {
 //increase the fear count by 5
 //for every scare the click count multiplies by 5
 function scare() {
-  let scareElm = ((think() * 5))
-  let fearCost = priceIncreaseFear(prices.fear)
-  trackerItems.fear += 1
-  trackerItems.ideas -= prices.fear
+  let scareElm = think()
+  let fearCost = priceIncreaseFear(trackerItems.fear.price)
+  trackerItems.fear.value += 1
+  trackerItems.idea.value -= trackerItems.fear.price
   drawTracker()
   // console.log("fear increase")
 
 }
 
 function chase() {
-  let chaseElm = think(startChaseInterval())
+  let chaseElm = startChaseInterval()
   let chaseCost = priceIncreaseChase()
-  trackerItems.urgency += 1
-  trackerItems.ideas -= prices.chase
+  trackerItems.chase += 1
+  trackerItems.idea.value -= trackerItems.chase.price
   drawTracker()
 }
 
-//getting drunk calls click function at an increased rate of 2x your normal click price
-function getDrunk() {
-  let drunkElm = (think(startDrunkInterval()) * 2)
-  let drunkCost = priceIncreaseWine()
-  trackerItems.drunk += 1
-  trackerItems.ideas -= prices.wine
+//getting wine calls click function at an increased rate of 2x your normal click price
+function wine() {
+  let wineElm = startwineInterval()
+  let wineCost = priceIncreaseWine()
+  trackerItems.wine += 1
+  trackerItems.idea.value -= trackerItems.wine.price
   drawTracker()
 }
 
@@ -86,80 +109,102 @@ function getDrunk() {
 function priceIncreaseBeer() {
   let beerPrice = document.getElementById("beer-price")
   if (beer) {
-    prices.beer += (Math.floor(prices.beer * .20))
+    trackerItems.beer.price += (Math.floor(trackerItems.beer.price * .20))
     beerPrice.innerHTML = `
     <div>
-    ${prices.beer}
+    ${trackerItems.beer.price}
     </div>`
-    // console.log("beer price increase", prices.beer)
+    // console.log("beer price increase", trackerItems.beer.price)
   }
 
 }
 function priceIncreaseFear() {
   let fearPrice = document.getElementById("fear-price")
   if (scare) {
-    prices.fear += (Math.floor(prices.fear * .20))
+    trackerItems.fear.price += (Math.floor(trackerItems.fear.price * .20))
     fearPrice.innerHTML = `
-      <div> ${prices.fear} </div>`
-    // console.log("scare price increase", prices.fear)
+      <div> ${trackerItems.fear.price} </div>`
+    // console.log("scare price increase", trackerItems.fear.price)
   }
 }
 function priceIncreaseWine() {
   let winePrice = document.getElementById("wine-price")
-  if (getDrunk) {
-    prices.wine += (Math.floor(prices.wine * .30))
-    winePrice.innerHTML = ` <div> ${prices.wine} </div>`
-    console.log("wine price is now increased", prices.wine)
+  if (wine) {
+    trackerItems.wine.price += (Math.floor(trackerItems.wine.price * .30))
+    winePrice.innerHTML = ` <div> ${trackerItems.wine.price} </div>`
+    console.log("wine price is now increased", trackerItems.wine.price)
   }
 }
 function priceIncreaseChase() {
   let chasePrice = document.getElementById("chase-price")
   if (chase) {
-    prices.chase += (Math.floor(prices.chase * .50))
-    chasePrice.innerHTML = `<div> ${prices.chase}`
-    console.log("chase price is now increased", prices.chase)
+    trackerItems.chase.price += (Math.floor(trackerItems.chase.price * .50))
+    chasePrice.innerHTML = `<div> ${trackerItems.chase.price}`
+    console.log("chase price is now increased", trackerItems.chase.price)
   }
 }
-function startDrunkInterval() {
+function startwineInterval() {
   drawTracker()
-  let interval = think(trackerItems.drunk, 500)
-  console.log("you have now become drunk")
+  let interval = setInterval(think, 5000)
+  console.log("you have now become wine")
 }
 function startChaseInterval() {
-  let interval = think(trackerItems.urgency, 250)
+  drawTracker()
+  let interval = setInterval(think, 1000)
   console.log("you are now being chased")
 }
 function drawTracker() {
   let tracker = document.getElementById("tracker")
   tracker.innerHTML = `
 <div id="tracker" class="tracker">
-<div>Current Idea Balance: ${trackerItems.ideas} 
+<div>Current Idea Balance: ${trackerItems.idea.value} 
  <i class="mdi mdi-thought-bubble"></i>
 </div>
-//TODO - 
-<!-- <div>Ideas per Second:
-  <p id="rate"-count>0</p>
+<!-- <div>idea per Second:
+  multiplier: 
   <i class="mdi mdi-thought-bubble"></i>
 </div> -->
-<div>Beers drank: ${trackerItems.beers}
+<div>beer drank: ${trackerItems.beer.value}
 <i class="mdi mdi-thought-bubble"></i>
 </div>
-<div>Fear drank: ${trackerItems.fear}
+<div>Fear drank: ${trackerItems.fear.value}
  <i class="mdi mdi-thought-bubble"></i>
 </div>
-<div>Wine drank: ${trackerItems.drunk}
+<div>Wine drank: ${trackerItems.wine.value}
  <i class="mdi mdi-thought-bubble"></i>
 </div>
-<div>Chases initiated: ${trackerItems.urgency}
+<div>Chases initiated: ${trackerItems.chase.value}
   <i class="mdi mdi-thought-bubble"></i>
 </div>
-//TODO - 
-<div>Total Ideas Created:
-  <p id="total-ideas-count">0</p>
+<div>Total idea Created:${trackerItems.historical.value}
   <i class="mdi mdi-thought-bubble"></i>
 </div>
 </div>`
-
+  // leveler()
 
 }
+function leveler() {
+  if (trackerItems.idea.value >= 50) {
+    trackerItems.idea.value += 1
+  }
+  if (trackerItems.idea.value >= 40) {
+    trackerItems.idea.value += 1
+  }
+  if (trackerItems.idea.value >= 30) {
+    trackerItems.idea.value += 1
+  }
+  if (trackerItems.idea.value >= 20) {
+    trackerItems.idea.value += 1
+  }
+  if (trackerItems.idea.value >= 10) {
+    trackerItems.idea.value += 1
+  }
+  console.log("automatic buffer")
+}
+function buffCounter(){
+  for(let key in trackerItems){
+    let buff = trackerItems[key]
+  }
+}
 drawTracker()
+leveler()
