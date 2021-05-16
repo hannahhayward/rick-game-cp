@@ -10,7 +10,7 @@
   object-fit: contain;
   background-repeat: no-repeat;
   padding-top: 20rem;
-  padding-bottom: 10rem;
+  /* padding-bottom: 10rem; */
   z-index: 0;
 }
 .ship{
@@ -22,7 +22,8 @@
   height: 28rem;
   transform: rotate(-9.7deg);
   margin-left: -4rem;
-  margin-top: 12rem;
+  margin-top: 12.3rem;
+  margin-bottom: -2rem;
 }
 .morty{
   height: 6rem;
@@ -75,4 +76,15 @@ div{
   background-color: var(--lgt-blue);
   width: 21vw;
   height: 14vh;
+}
+.take-away{
+  display: none;
+}
+.move{
+  padding-bottom: 2rem;
+  margin-top:5rem;
+}
+.alert{
+  height: 3rem;
+  width: 23rem;
 }

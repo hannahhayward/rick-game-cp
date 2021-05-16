@@ -1,24 +1,24 @@
 let trackerItems = {
-  idea: {
-    name: 'idea',
+  belch: {
+    name: 'belch',
     price: 0,
     value: 0,
     buffs: 1
   },
-  fear: {
-    name: 'fears',
-    price: 50,
-    value: 0,
-    buffs: 5
-  },
-  beer: {
-    name: 'beer',
+  swig: {
+    name: 'swig',
     price: 25,
     value: 0,
     buffs: 1,
   },
-  wine: {
-    name: 'wine',
+  scream: {
+    name: 'scream',
+    price: 50,
+    value: 0,
+    buffs: 5
+  },
+  schwifty: {
+    name: 'schwifty',
     price: 100,
     value: 0,
     buffs: 0
@@ -32,220 +32,232 @@ let trackerItems = {
 }
 let historicalCount = 0
 let buffTotal = 0
-// debugger
-//main image
-//on click harvest a good idea
-//one idea per click
-function think() {
-  // debugger
-  // buffCounter()
+function belch() {
   drawTracker()
-  // leveler()
-
-  if (trackerItems.beer.value >= 1) {
-    ((trackerItems.idea.value += (trackerItems.beer.value * trackerItems.beer.buffs)));
-    ((historicalCount += (trackerItems.beer.value * trackerItems.beer.buffs)))
+  let purchaseAlert = document.getElementById("alert")
+  purchaseAlert.classList.add("take-away")
+  if (trackerItems.swig.value >= 1) {
+    ((trackerItems.belch.value += (trackerItems.swig.value * trackerItems.swig.buffs)));
+    ((historicalCount += (trackerItems.swig.value * trackerItems.swig.buffs)))
   }
 
-  if (trackerItems.beer.value >= 1 && trackerItems.fear.value >= 1) {
-    (trackerItems.idea.value += ((trackerItems.beer.buffs * trackerItems.beer.value) + (trackerItems.fear.buffs + trackerItems.fear.value)))
-      (historicalCount += ((trackerItems.beer.buffs * trackerItems.beer.value) + (trackerItems.fear.buffs + trackerItems.fear.value)))
+  if (trackerItems.swig.value >= 1 && trackerItems.scream.value >= 1) {
+    (trackerItems.belch.value += ((trackerItems.swig.buffs * trackerItems.swig.value) + (trackerItems.scream.buffs + trackerItems.scream.value)));
+    (historicalCount += ((trackerItems.swig.buffs * trackerItems.swig.value) + (trackerItems.scream.buffs + trackerItems.scream.value)));
   }
-  if (trackerItems.fear.value >= 1 && trackerItems.chase.value >= 1) {
-    (trackerItems.idea.value += ((trackerItems.fear.buffs * trackerItems.fear.value) + (trackerItems.chase.buffs * trackerItems.chase.value)))
-      (historicalCount += ((trackerItems.fear.buffs * trackerItems.fear.value) + (trackerItems.chase.buffs * trackerItems.chase.value)))
+  if (trackerItems.scream.value >= 1 && trackerItems.chase.value >= 1) {
+    (trackerItems.belch.value += ((trackerItems.scream.buffs * trackerItems.scream.value) + (trackerItems.chase.buffs * trackerItems.chase.value)));
+    (historicalCount += ((trackerItems.scream.buffs * trackerItems.scream.value) + (trackerItems.chase.buffs * trackerItems.chase.value)));
   }
-  if (trackerItems.beer.value >= 1 && trackerItems.fear.value >= 1 && trackerItems.chase.value >= 1) {
-    (trackerItems.idea.value += ((trackerItems.beer.buffs * trackerItems.beer.value) + (trackerItems.fear.buffs * trackerItems.fear.value) + (trackerItems.chase.buffs * trackerItems.chase.value)));
-    (historicalCount += ((trackerItems.beer.buffs * trackerItems.beer.value) + (trackerItems.fear.buffs * trackerItems.fear.value) + t(rackerItems.chase.buffs) * trackerItems.chase.value));
+  if (trackerItems.swig.value >= 1 && trackerItems.scream.value >= 1 && trackerItems.chase.value >= 1) {
+    (trackerItems.belch.value += ((trackerItems.swig.buffs * trackerItems.swig.value) + (trackerItems.scream.buffs * trackerItems.scream.value) + (trackerItems.chase.buffs * trackerItems.chase.value)));
+    (historicalCount += ((trackerItems.swig.buffs * trackerItems.swig.value) + (trackerItems.scream.buffs * trackerItems.scream.value) + (trackerItems.chase.buffs * trackerItems.chase.value)))
   }
-  if (trackerItems.fear.value >= 1) {
-    ((trackerItems.idea.value += (trackerItems.fear.value * trackerItems.fear.buffs)));
-    ((historicalCount += (trackerItems.fear.value * trackerItems.fear.buffs)))
-    // && (trackerItems.historical.value += (trackerItems.fear.value * trackerItems.fear.buffs)))
-
+  if (trackerItems.scream.value >= 1) {
+    ((trackerItems.belch.value += (trackerItems.scream.value * trackerItems.scream.buffs)));
+    ((historicalCount += (trackerItems.scream.value * trackerItems.scream.buffs)))
   }
   if (trackerItems.chase >= 1) {
-    ((trackerItems.idea.value += (trackerItems.chase.value * trackerItems.chase.buffs)));
+    ((trackerItems.belch.value += (trackerItems.chase.value * trackerItems.chase.buffs)));
     ((historicalCount += (trackerItems.chase.value * trackerItems.chase.buffs)))
-
-    // && (trackerItems.historical.value += (trackerItems.chase * buffs.chase))))
   }
   historicalCount += 1
-  trackerItems.idea.value += 1
+  trackerItems.belch.value += 1
   drawTracker()
+  btnsEnabled()
+  btns()
 }
-function beer() {
-  // debugger
+function swig() {
+ swiggSound()
+  if (trackerItems.belch.value >= trackerItems.swig.price) {
+    btns()
+  }
   let purchaseAlert = document.getElementById("alert")
-  trackerItems.idea.value -= trackerItems.beer.price
-  trackerItems.beer.value += 1
+  trackerItems.belch.value -= trackerItems.swig.price
+  trackerItems.swig.value += 1
   purchaseAlert.innerHTML = `
   <div class="alert alert-success alert-dismissible fade show" role="alert" data-dismiss="2000">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <div> <strong>You purchased a beer!</strong> </div>
-  <div> Your current idea balance is: ${trackerItems.idea.value} <i class="mdi mdi-thought-bubble"></i></div
+  <div> <strong>You purchased a swig!</strong> </div>
 </div>`
-  priceIncreaseBeer()
+  purchaseAlert.classList.remove("take-away")
+  priceIncreaseSwig()
+  btnsEnabled()
   drawTracker()
-  // console.log ("multiplied by two per click", 2)
 }
 
-function scare() {
-  priceIncreaseFear()
+function scream() {
+  stop()
+  if (trackerItems.belch.value >= trackerItems.scream.price) {
+    btns()
+  }
   let purchaseAlert = document.getElementById("alert")
-  trackerItems.idea.value -= trackerItems.fear.price
-  trackerItems.fear.value += 1
+  trackerItems.belch.value -= trackerItems.scream.price
+  trackerItems.scream.value += 1
   purchaseAlert.innerHTML = `
   <div class="alert alert-success alert-dismissible fade show" role="alert" data-dismiss="2000">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <div> <strong>You paid to scare Rick!</strong> </div>
-  <div> Your current idea balance is: ${trackerItems.idea.value} <i class="mdi mdi-thought-bubble"></i></div
-</div>`
+  <div> <strong>You paid to scream Morty!</strong> </div>
+  </div>`
+  purchaseAlert.classList.remove("take-away")
+  priceIncreaseScream()
+  btnsEnabled()
   drawTracker()
-  // console.log("fear increase")
-
 }
 
 function chase() {
+  terrySound()
+  let showTerry = document.getElementById("terry")
+  if (trackerItems.belch.value >= trackerItems.chase.price) {
+    btns()
+  }
+  showTerry.classList.remove("take-away")
   startChaseInterval()
-  priceIncreaseChase()
   let purchaseAlert = document.getElementById("alert")
   trackerItems.chase.value += 1
-  trackerItems.idea.value -= trackerItems.chase.price
+  trackerItems.belch.value -= trackerItems.chase.price
   purchaseAlert.innerHTML = `
   <div class="alert alert-success alert-dismissible fade show" role="alert" data-dismiss="2000">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
   <div> <strong>You paid to initiate a chase after Rick!</strong> </div>
-  <div> Your current idea balance is: ${trackerItems.idea.value} <i class="mdi mdi-thought-bubble"></i></div
-</div>`
+  </div>`
+  purchaseAlert.classList.remove("take-away")
+  priceIncreaseChase()
+  btnsEnabled()
   drawTracker()
 }
 
-function wine() {
-  // debugger
+function schwifty() {
+  getSchwifty()
+  if (trackerItems.belch.value >= trackerItems.schwifty.price) {
+    btns()
+  }
   let purchaseAlert = document.getElementById("alert")
-  startwineInterval()
-  priceIncreaseWine()
-  trackerItems.wine.value += 1
-  trackerItems.idea.value -= trackerItems.wine.price
+  startschwiftyInterval()
+  trackerItems.schwifty.value += 1
+  trackerItems.belch.value -= trackerItems.schwifty.price
   purchaseAlert.innerHTML = `
   <div class="alert alert-success alert-dismissible fade show" role="alert" data-dismiss="2000">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <div> <strong>You purchased a bottle of wine!</strong> </div>
-  <div> Your current idea balance is: ${trackerItems.idea.value} <i class="mdi mdi-thought-bubble"></i></div
-</div>`
+  <div> <strong>You purchased a bottle of schwifty!</strong> </div>
+  </div>`
+  purchaseAlert.classList.remove("take-away")
+  priceIncreaseSchwifty()
+  btnsEnabled()
   drawTracker()
 }
-function priceIncreaseBeer() {
-  let beerPrice = document.getElementById("beer-price")
-  if (beer) {
-    trackerItems.beer.price += (Math.floor(trackerItems.beer.price * .20))
-    beerPrice.innerHTML = `
-    <div>
-    ${trackerItems.beer.price}
-    </div>`
-    // console.log("beer price increase", trackerItems.beer.price)
-  }
-
+function priceIncreaseSwig() {
+  let swigPrice = document.getElementById("swig-price")
+  if (swig) {
+    trackerItems.swig.price += (Math.floor(trackerItems.swig.price * .20))
+    swigPrice.innerHTML = `
+    <h3>
+    ${trackerItems.swig.price}<i class="mdi mdi-thought-bubble"></i> 
+    </h3>`}
+  btnsEnabled()
+  btns()
 }
-function priceIncreaseFear() {
-  let fearPrice = document.getElementById("fear-price")
-  if (scare) {
-    trackerItems.fear.price += (Math.floor(trackerItems.fear.price * .20))
-    fearPrice.innerHTML = `
-      <div> ${trackerItems.fear.price} </div>`
-    // console.log("scare price increase", trackerItems.fear.price)
+function priceIncreaseScream() {
+  let screamPrice = document.getElementById("scream-price")
+  if (scream) {
+    trackerItems.scream.price += (Math.floor(trackerItems.scream.price * .20))
+    screamPrice.innerHTML = `
+    <h3>
+    ${trackerItems.scream.price}<i class="mdi mdi-thought-bubble"></i> 
+    </h3>`
+    btnsEnabled()
+    btns()
   }
 }
-function priceIncreaseWine() {
-  let winePrice = document.getElementById("wine-price")
-  if (wine) {
-    trackerItems.wine.price += (Math.floor(trackerItems.wine.price * .30))
-    winePrice.innerHTML = ` <div> ${trackerItems.wine.price} </div>`
-    console.log("wine price is now increased", trackerItems.wine.price)
+function priceIncreaseSchwifty() {
+  let schwiftyPrice = document.getElementById("schwifty-price")
+  if (schwifty) {
+    trackerItems.schwifty.price += (Math.floor(trackerItems.schwifty.price * .30))
+    schwiftyPrice.innerHTML = `
+    <h3>
+    ${trackerItems.schwifty.price}<i class="mdi mdi-thought-bubble"></i> 
+    </h3>`
   }
+  btnsEnabled()
+  btns()
 }
 function priceIncreaseChase() {
   let chasePrice = document.getElementById("chase-price")
   if (chase) {
     trackerItems.chase.price += (Math.floor(trackerItems.chase.price * .50))
-    chasePrice.innerHTML = `<div> ${trackerItems.chase.price}`
-    console.log("chase price is now increased", trackerItems.chase.price)
+    chasePrice.innerHTML = `
+    <h3>
+    ${trackerItems.chase.price}<i class="mdi mdi-thought-bubble"></i> 
+    </h3>`
   }
+  btnsEnabled()
+  btns()
 }
-function startwineInterval() {
+function startschwiftyInterval() {
   drawTracker()
   if (trackerItems.chase.value >= 1) {
     startChaseInterval()
   }
-  let interval = setInterval(think, 3000)
-  console.log("you have now become wine")
+  let interval = setInterval(belch, 3000)
 }
 function startChaseInterval() {
   drawTracker()
-  if (trackerItems.wine.value >= 1) {
-    return startwineInterval
-    let interval = setInterval(think, 700)
+  if (trackerItems.schwifty.value >= 1) {
+    return startschwiftyInterval
+    let interval = setInterval(belch, 700)
   }
-  let interval = setInterval(think, 1000)
-  console.log("you are now being chased")
+  let interval = setInterval(belch, 1000)
 }
-
+function btns() {
+    document.getElementById("chase").classList.add("disabled");
+    document.getElementById("schwifty").classList.add("disabled");
+    document.getElementById("scream").classList.add("disabled");
+    document.getElementById("swig").classList.add("disabled");
+  btnsEnabled()
+  drawTracker()
+}
+function btnsEnabled() {
+  if (trackerItems.belch.value >= trackerItems.chase.price) {
+    document.getElementById("chase").classList.remove("disabled")
+  }
+  if (trackerItems.belch.value >= trackerItems.schwifty.price) {
+    document.getElementById("schwifty").classList.remove("disabled")
+  }
+    if (trackerItems.belch.value >= trackerItems.scream.price) {
+      document.getElementById("scream").classList.remove("disabled")
+    }
+    if (trackerItems.belch.value >= trackerItems.swig.price) {
+      document.getElementById("swig").classList.remove("disabled")
+  }
+}
 function drawTracker() {
-  // buffCounter()
-  let trackBeer = document.getElementById("beer-value")
-  let trackIdea = document.getElementById("idea-value")
-  let trackFear = document.getElementById("fear-value")
-  let trackWine = document.getElementById("wine-value")
+  let trackswig = document.getElementById("swig-value")
+  let trackBelch = document.getElementById("belch-value")
+  let trackscream = document.getElementById("scream-value")
+  let trackschwifty = document.getElementById("schwifty-value")
   let trackChase = document.getElementById("chase-value")
   let trackHistorical = document.getElementById("historical")
 
-  trackBeer.innerHTML = `<span> ${trackerItems.beer.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></span>`
-  trackIdea.innerHTML = `<span> ${trackerItems.idea.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></span>`
-  trackFear.innerHTML = `<span> ${trackerItems.fear.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></span>`
-  trackWine.innerHTML = `<span> ${trackerItems.wine.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></span>`
-  trackChase.innerHTML = `<span> ${trackerItems.chase.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></span>`
-  trackHistorical.innerHTML = `<span> ${historicalCount} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></span>`
-}
-// function leveler() {
-//   if (trackerItems.idea.value >= 50) {
-//     trackerItems.idea.buffs += 1
-//   }
-//   if (trackerItems.idea.value >= 40) {
-//     trackerItems.idea.buffs += 1
-//   }
-//   if (trackerItems.idea.value >= 30) {
-//     trackerItems.idea.buffs += 1
-//   }
-//   if (trackerItems.idea.value >= 20) {
-//     trackerItems.idea.buffs += 1
-//   }
-//   if (trackerItems.idea.value >= 10) {
-//     trackerItems.idea.buffs += 1
-//   }
-//   console.log("automatic buffer", buffTotal)
-// }
 
-// function buffCounter() {
-//   if (trackerItems.beer.value >= 1) {
-//     (buffTotal += (trackerItems.beer.value * trackerItems.beer.buffs))
-//   }
-//   if (trackerItems.fear.value >= 1) {
-//     (buffTotal += (trackerItems.fear.value * trackerItems.fear.buffs))
-//   }
-//   if (trackerItems.chase.value >= 1) {
-//     (buffTotal += (trackerItems.chase.value * trackerItems.chase.buffs))
-//   }
-//   buffTotal = trackerItems.idea.buffs
-// }
-// buffCounter()
+  trackswig.innerHTML = `<h3> ${trackerItems.swig.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></h3>`
+  trackBelch.innerHTML = `<h3> ${trackerItems.belch.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></h3>`
+  trackscream.innerHTML = `<h3> ${trackerItems.scream.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></h3>`
+  trackschwifty.innerHTML = `<h3> ${trackerItems.schwifty.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></h3>`
+  trackChase.innerHTML = `<h3> ${trackerItems.chase.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></h3>`
+  trackHistorical.innerHTML = `<h3> ${historicalCount} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></h3>`
+}
 drawTracker()
+btns()
+function getSchwifty(){
+ let audio = new Audio('https://sound.peal.io/ps/audios/000/000/550/original/get_schwifty_in_here.wav?1469744423');
+ audio.play();
+}
+function stop(){
+  let audio = new Audio('https://sound.peal.io/ps/audios/000/000/739/original/ohmygod.mp3?1469744104')
+  audio.play();
+}
+function swiggSound(){
+  let audio = new Audio('https://sound.peal.io/ps/audios/000/000/533/original/Riggity.wav?1469744359')
+  audio.play();
+}
+function terrySound(){
+  let audio = new Audio('https://www.101soundboards.com/storage/board_sounds_rendered/141101.mp3?md5=R5fOjpotDJz6loqWQkDmAg&expires=1621210931')
+  audio.play();
+}
+

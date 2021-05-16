@@ -17,93 +17,139 @@
 <body class="main-bg">
   <nav class="navbar nav-bar p-0 justify-content-center sticky-top">
     <div class="container-fluid justify-content-center">
-    <h1 class="navbar-brand nav mb-0">Rick & Morty Click Game</h1>
-    <div class="row txt-wht flex justify-content-center">
-      <div class="col-2  text-center ">
-        <h3> Current Idea Balance:</h3>
-        <span id="idea-value">
-           </span>
-      </div>
-      <div class=" col-2  text-center ">
-        <h3> Swiggs taken:</h3>
-        <span id="beer-value">
+      <h1 class="navbar-brand nav mb-0">Rick & Morty Click Game</h1>
+      <div class="row txt-wht flex justify-content-center">
+        <div class="col-2  text-center ">
+          <h3> Current Belch Balance:</h3>
+          <span id="belch-value">
           </span>
+        </div>
+        <div class=" col-2  text-center ">
+          <h3> Swigs Taken:</h3>
+          <span id="swig-value">
+          </span>
+        </div>
+        <div class=" col-2  text-center ">
+          <h3> Mortys' Screams:</h3>
+          <span id="scream-value">
+          </span>
+        </div>
+        <div class=" col-2  text-center ">
+          <h3>Get Schwifties:</h3>
+          <span id="schwifty-value">
+          </span>
+        </div>
+        <div class=" col-2  text-center ">
+          <h3>Chases Initiated:</h3>
+          <span id="chase-value">
+          </span>
+        </div>
+        <div class=" col-2  text-center ">
+          <h3>Total Belch Created:</h3>
+          <span id="historical">
+          </span>
+        </div>
       </div>
-      <div class=" col-2  text-center ">
-        <h3> Morty Screams:</h3>
-        <span id="fear-value">
-           </span>
-      </div>
-      <div class=" col-2  text-center ">
-        <h3>Get Schwifties:</h3>
-        <span id="wine-value">
-           </span>
-      </div>
-      <div class=" col-2  text-center ">
-        <h3>Chases initiated:</h3>
-        <span id="chase-value">
-           </span>
-      </div>
-      <div class=" col-2  text-center ">
-        <h3>Total ideas Created:</h3>
-        <span id="historical">
-           </span>
-      </div>
-    </div>
   </nav>
   <main>
     <div class="container-fluid">
-      <div class="row">
-        <div id="alert" class=" alert col-6"></div>
-      </div>
-      <div class="row">
+      <div class="row" style="margin-top: 2rem;">
         <div class="col-4">
-
           <img src="https://github.com/hannahhayward/rick-game-cp/blob/master/5_15_2021%208_07_13%20PM.png?raw=true"
-            alt="terry" class="terry">
-
+            alt="terry" class="terry take-away" id="terry">
         </div>
         <div class="col-8">
-          <img src="https://i.gifer.com/origin/bd/bd230cde4a6f31d2a9556b3ce3451b2c.gif" onclick="think()" alt="main"
+          <img src="https://i.gifer.com/origin/bd/bd230cde4a6f31d2a9556b3ce3451b2c.gif" onclick="belch()" alt="main"
             class="rick-position">
           <img
             src="https://images.squarespace-cdn.com/content/v1/528252b7e4b00150d03a4848/1503802778210-U2WB305XUV8G7RNNRLZY/ke17ZwdGBToddI8pDm48kJUlZr2Ql5GtSKWrQpjur5t7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Uc2TsYyWrvo4cxLsTiAHD0wm8wv6KuSQ-vWcvdKCNFvRm4bjm9DAHF2kOsIZRJKXnA/RickAndMorty_MortySad1500_V2.gif?format=2500w"
-            class="morty" alt="">
+            class="morty" alt="" onclick="belch()">
           <div class="ship">
             <img src="https://github.com/hannahhayward/rick-game-cp/blob/master/5_15_2021%208_06_34%20PM.png?raw=true"
-              class="ship-position" alt="ship">
+              class="ship-position" alt="ship" onclick="belch()">
           </div>
         </div>
       </div>
 
-      <div class="row justify-content-center">
-        <div class="col-12 buttons my-5 text-center">
-          <div class="btn btns" onclick="beer()">
-            <img src="https://i.pinimg.com/originals/38/18/71/3818718f68ff75a5e686fe7d113c60b6.png" alt="">
-            <div id="beer-price"> 25 </div>
-            <i class="mdi mdi-thought-bubble"></i> Beer
-          </div>
-          <div class="btn btns" onclick="scare()">
-            <div id="fear-price"> 50 </div>
-            <img src="https://images.squarespace-cdn.com/content/v1/528252b7e4b00150d03a4848/1503802785970-D7NOQ9UQNLYAY1F6MJAP/ke17ZwdGBToddI8pDm48kJUlZr2Ql5GtSKWrQpjur5t7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UYapt4KGntwbjD1IFBRUBU6SRwXJogFYPCjZ6mtBiWtU3WUfc_ZsVm9Mi1E6FasEnQ/RickAndMorty_ScaredMorty1500.png?format=500w" alt="">
-            <i class="mdi mdi-thought-bubble"></i>
-            <div>Scare</div>
-          </div>
-          <div class="btn btns" onclick="wine()">
-            <div id="wine-price"> 100 </div>
-            <img src="https://mystickermania.com/cdn/stickers/rick-and-morty/rick-morty-get-schwifty-song-512x512.png" alt="">
-            <i class="mdi mdi-thought-bubble"></i> Wine
-          </div>
-          <div class="btn btns" onclick="chase()">
-            <img src="https://i.pinimg.com/originals/5e/f7/e4/5ef7e4b1006b1f68619f6fc1ed1b4941.png" alt="">
-            <div id="chase-price"> 350 </div>
-            <i class="mdi mdi-thought-bubble"></i>
-            Be Chased
-          </div>
+      <div class="row move">
+        <div class="col-3 p-0 buttons text-center">
+          <a class="btn shadow btns " onclick="swig()" id="swig">
+            <h3>
+              <!-- <img src="https://github.com/hannahhayward/rick-game-cp/blob/master/image0.png?raw=true" alt="" class="h-100 justify-self-start flex-wrap d-flex m-0 b-0"> -->
+              <span class="text-right">Take a Swig
+            </h3>
+            <h3 id="swig-price"> 25 <i class="mdi mdi-thought-bubble"></i>
+            </h3>
+            </span>
+          </a>
+        </div>
+        <div class="col-3 p-0">
+          <a class="btn shadow btns " onclick="scream()" id="scream">
+            <h3>
+              <!-- <img
+                src="https://images.squarespace-cdn.com/content/v1/528252b7e4b00150d03a4848/1503802785970-D7NOQ9UQNLYAY1F6MJAP/ke17ZwdGBToddI8pDm48kJUlZr2Ql5GtSKWrQpjur5t7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UYapt4KGntwbjD1IFBRUBU6SRwXJogFYPCjZ6mtBiWtU3WUfc_ZsVm9Mi1E6FasEnQ/RickAndMorty_ScaredMorty1500.png?format=500w"
+                class=" flex-wrap d-flex" alt="" style=" height: 5rem;"> -->
+              <span class="text-right text-break">Scream
+            </h3>
+            <h3 id="scream-price"> 50 <i class="mdi mdi-thought-bubble"></i>
+            </h3>
+            </span>
+          </a>
+        </div>
+        <div class="col-3 p-0">
+          <a class="btn shadow btns " onclick="schwifty()" id="schwifty">
+            <h3>
+              <!-- <img src="https://mystickermania.com/cdn/stickers/rick-and-morty/rick-morty-get-schwifty-song-512x512.png"
+                alt="" class="" style="height: 6rem;"> -->
+              <span class="text-right text-break">Get Schwifty
+            </h3>
+            <h3 id="schwifty-price"> 100 <i class="mdi mdi-thought-bubble"></i>
+            </h3>
+            </span>
+          </a>
+        </div>
+        <div class="col-3 p-0">
+          <a class="btn shadow btns " onclick="chase()" id="chase">
+            <h3>
+              <!-- <img src="https://i.pinimg.com/originals/5e/f7/e4/5ef7e4b1006b1f68619f6fc1ed1b4941.png" alt="" class="h-75"> -->
+              <span class="text-right text-break">Be Chased
+            </h3>
+            <h3 id="chase-price"> 350 <i class="mdi mdi-thought-bubble"></i>
+            </h3>
+            </span>
+          </a>
         </div>
       </div>
     </div>
   </main>
+  <footer class="py-2 bg-grn" style="margin-top: -2rem;">
+    <div class="container-fluid bg-grn py-1">
+      <div class="row">
+        <div class="col-6 py-3 txt-wht"> <h2>Collect Ricks' Belches to Purchase Boosts!</h2></div>
+        <div id="alert" class="alert col-6 take-away"></div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row txt-wht" style="font-size: 27px;">
+        <div class="col-3">
+          <p>Take a Swig!</p>
+          <p>Increases your click rate by 1!</p>
+        </div>
+        <div class="col-3">
+          <p>Make Morty Scream!</p>
+          <p>Increases your click rate by 5!</p>
+        </div>
+        <div class="col-3">
+          <p>Get Schwify</p>
+          <p>Automatically gathers Belches every 3 seconds!</p>
+        </div>
+        <div class="col-3">
+          <p>Scary Terry</p>
+          <p>Multiplies click rate by ten and automatically gathers every 1 second!</p>
+        </div>
+      </div>
+    </div>
+  </footer>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
