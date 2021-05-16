@@ -8,66 +8,111 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
     integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Rick Game</title>
 </head>
 
-<body>
-  <header>
-    <div class="container">
-      <div class="row">
-        <div class="col-6"></div>
-        <div id="alert" class=" alert col-6"></div>
+<body class="main-bg">
+  <nav class="navbar nav-bar p-0 justify-content-center sticky-top">
+    <div class="container-fluid justify-content-center">
+    <h1 class="navbar-brand nav mb-0">Rick & Morty Click Game</h1>
+    <div class="row txt-wht flex justify-content-center">
+      <div class="col-2  text-center ">
+        <h3> Current Idea Balance:</h3>
+        <span id="idea-value">
+           </span>
+      </div>
+      <div class=" col-2  text-center ">
+        <h3> Swiggs taken:</h3>
+        <span id="beer-value">
+          </span>
+      </div>
+      <div class=" col-2  text-center ">
+        <h3> Morty Screams:</h3>
+        <span id="fear-value">
+           </span>
+      </div>
+      <div class=" col-2  text-center ">
+        <h3>Get Schwifties:</h3>
+        <span id="wine-value">
+           </span>
+      </div>
+      <div class=" col-2  text-center ">
+        <h3>Chases initiated:</h3>
+        <span id="chase-value">
+           </span>
+      </div>
+      <div class=" col-2  text-center ">
+        <h3>Total ideas Created:</h3>
+        <span id="historical">
+           </span>
       </div>
     </div>
-  </header>
+  </nav>
   <main>
-    <div class="container-fluid ">
+    <div class="container-fluid">
+      <div class="row">
+        <div id="alert" class=" alert col-6"></div>
+      </div>
       <div class="row">
         <div class="col-4">
-          <div id="tracker" class="tracker">
+
+          <img src="https://github.com/hannahhayward/rick-game-cp/blob/master/5_15_2021%208_07_13%20PM.png?raw=true"
+            alt="terry" class="terry">
+
+        </div>
+        <div class="col-8">
+          <img src="https://i.gifer.com/origin/bd/bd230cde4a6f31d2a9556b3ce3451b2c.gif" onclick="think()" alt="main"
+            class="rick-position">
+          <img
+            src="https://images.squarespace-cdn.com/content/v1/528252b7e4b00150d03a4848/1503802778210-U2WB305XUV8G7RNNRLZY/ke17ZwdGBToddI8pDm48kJUlZr2Ql5GtSKWrQpjur5t7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Uc2TsYyWrvo4cxLsTiAHD0wm8wv6KuSQ-vWcvdKCNFvRm4bjm9DAHF2kOsIZRJKXnA/RickAndMorty_MortySad1500_V2.gif?format=2500w"
+            class="morty" alt="">
+          <div class="ship">
+            <img src="https://github.com/hannahhayward/rick-game-cp/blob/master/5_15_2021%208_06_34%20PM.png?raw=true"
+              class="ship-position" alt="ship">
           </div>
         </div>
-        <div class="col-4 Rick m-1 ship">
-          <img src="https://i.gifer.com/origin/bd/bd230cde4a6f31d2a9556b3ce3451b2c.gif" onclick="think()" alt="main">
-        </div>
-        <div class="col-4 buttons my-5">
-          <div class="btn btn-primary" onclick="beer()">
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-12 buttons my-5 text-center">
+          <div class="btn btns" onclick="beer()">
+            <img src="https://i.pinimg.com/originals/38/18/71/3818718f68ff75a5e686fe7d113c60b6.png" alt="">
             <div id="beer-price"> 25 </div>
             <i class="mdi mdi-thought-bubble"></i> Beer
           </div>
-          <div class="btn btn-primary" onclick="scare()">
+          <div class="btn btns" onclick="scare()">
             <div id="fear-price"> 50 </div>
+            <img src="https://images.squarespace-cdn.com/content/v1/528252b7e4b00150d03a4848/1503802785970-D7NOQ9UQNLYAY1F6MJAP/ke17ZwdGBToddI8pDm48kJUlZr2Ql5GtSKWrQpjur5t7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UYapt4KGntwbjD1IFBRUBU6SRwXJogFYPCjZ6mtBiWtU3WUfc_ZsVm9Mi1E6FasEnQ/RickAndMorty_ScaredMorty1500.png?format=500w" alt="">
             <i class="mdi mdi-thought-bubble"></i>
             <div>Scare</div>
           </div>
-          <div class="btn btn-primary" onclick="wine()">
+          <div class="btn btns" onclick="wine()">
             <div id="wine-price"> 100 </div>
+            <img src="https://mystickermania.com/cdn/stickers/rick-and-morty/rick-morty-get-schwifty-song-512x512.png" alt="">
             <i class="mdi mdi-thought-bubble"></i> Wine
           </div>
-        </div>
-        <div class="btn btn-primary" onclick="chase()">
-          <div id="chase-price"> 350 </div>
-          <i class="mdi mdi-thought-bubble"></i>
-          Be Chased
+          <div class="btn btns" onclick="chase()">
+            <img src="https://i.pinimg.com/originals/5e/f7/e4/5ef7e4b1006b1f68619f6fc1ed1b4941.png" alt="">
+            <div id="chase-price"> 350 </div>
+            <i class="mdi mdi-thought-bubble"></i>
+            Be Chased
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12"> </div>
-    </div>
     </div>
   </main>
-  <footer>
-    <div class="container-fluid ">
-      <div class="row">
-        <div class="col-12"></div>
-      </div>
-    </div>
-  </footer>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+    crossorigin="anonymous"></script>
   <script src="main.js"></script>
 </body>
 

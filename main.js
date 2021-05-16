@@ -48,16 +48,16 @@ function think() {
   }
 
   if (trackerItems.beer.value >= 1 && trackerItems.fear.value >= 1) {
-    (trackerItems.idea.value += ((trackerItems.beer.buffs *trackerItems.beer.value)+(trackerItems.fear.buffs+trackerItems.fear.value)))
-    (historicalCount+= ((trackerItems.beer.buffs *trackerItems.beer.value)+(trackerItems.fear.buffs+trackerItems.fear.value)))
+    (trackerItems.idea.value += ((trackerItems.beer.buffs * trackerItems.beer.value) + (trackerItems.fear.buffs + trackerItems.fear.value)))
+      (historicalCount += ((trackerItems.beer.buffs * trackerItems.beer.value) + (trackerItems.fear.buffs + trackerItems.fear.value)))
   }
-  if(trackerItems.fear.value >= 1 && trackerItems.chase.value >= 1){
-    (trackerItems.idea.value += ((trackerItems.fear.buffs*trackerItems.fear.value) + (trackerItems.chase.buffs * trackerItems.chase.value)))
-    (historicalCount += ((trackerItems.fear.buffs*trackerItems.fear.value) + (trackerItems.chase.buffs * trackerItems.chase.value)))
+  if (trackerItems.fear.value >= 1 && trackerItems.chase.value >= 1) {
+    (trackerItems.idea.value += ((trackerItems.fear.buffs * trackerItems.fear.value) + (trackerItems.chase.buffs * trackerItems.chase.value)))
+      (historicalCount += ((trackerItems.fear.buffs * trackerItems.fear.value) + (trackerItems.chase.buffs * trackerItems.chase.value)))
   }
-  if (trackerItems.beer.value >= 1 && trackerItems.fear.value >= 1 && trackerItems.chase.value >=1) {
-    (trackerItems.idea.value += ((trackerItems.beer.buffs*trackerItems.beer.value) + (trackerItems.fear.buffs * trackerItems.fear.value) + (trackerItems.chase.buffs*trackerItems.chase.value)));
-    (historicalCount += ((trackerItems.beer.buffs*trackerItems.beer.value) + (trackerItems.fear.buffs * trackerItems.fear.value) +t(rackerItems.chase.buffs)*trackerItems.chase.value));
+  if (trackerItems.beer.value >= 1 && trackerItems.fear.value >= 1 && trackerItems.chase.value >= 1) {
+    (trackerItems.idea.value += ((trackerItems.beer.buffs * trackerItems.beer.value) + (trackerItems.fear.buffs * trackerItems.fear.value) + (trackerItems.chase.buffs * trackerItems.chase.value)));
+    (historicalCount += ((trackerItems.beer.buffs * trackerItems.beer.value) + (trackerItems.fear.buffs * trackerItems.fear.value) + t(rackerItems.chase.buffs) * trackerItems.chase.value));
   }
   if (trackerItems.fear.value >= 1) {
     ((trackerItems.idea.value += (trackerItems.fear.value * trackerItems.fear.buffs)));
@@ -112,8 +112,8 @@ function scare() {
 }
 
 function chase() {
-startChaseInterval()
- priceIncreaseChase()
+  startChaseInterval()
+  priceIncreaseChase()
   let purchaseAlert = document.getElementById("alert")
   trackerItems.chase.value += 1
   trackerItems.idea.value -= trackerItems.chase.price
@@ -144,9 +144,6 @@ function wine() {
   <div> Your current idea balance is: ${trackerItems.idea.value} <i class="mdi mdi-thought-bubble"></i></div
 </div>`
   drawTracker()
-}
-function alert() {
-
 }
 function priceIncreaseBeer() {
   let beerPrice = document.getElementById("beer-price")
@@ -187,7 +184,7 @@ function priceIncreaseChase() {
 }
 function startwineInterval() {
   drawTracker()
-  if(trackerItems.chase.value>=1){
+  if (trackerItems.chase.value >= 1) {
     startChaseInterval()
   }
   let interval = setInterval(think, 3000)
@@ -195,43 +192,29 @@ function startwineInterval() {
 }
 function startChaseInterval() {
   drawTracker()
-  if(trackerItems.wine.value >= 1){
+  if (trackerItems.wine.value >= 1) {
     return startwineInterval
-  let interval = setInterval(think, 700)
-}
-let interval = setInterval(think, 1000)
+    let interval = setInterval(think, 700)
+  }
+  let interval = setInterval(think, 1000)
   console.log("you are now being chased")
 }
 
 function drawTracker() {
   // buffCounter()
-  let tracker = document.getElementById("tracker")
-  tracker.innerHTML = `
-<div id="tracker" class="tracker">
-<div>Current Idea Balance: ${trackerItems.idea.value} 
- <i class="mdi mdi-thought-bubble"></i>
-</div>
-// <div>ideas per Second:
-//   <i class="mdi mdi-thought-bubble"></i>
-// </div>
-<div>beer drank: ${trackerItems.beer.value}
-<i class="mdi mdi-thought-bubble"></i>
-</div>
-<div>Fear drank: ${trackerItems.fear.value}
- <i class="mdi mdi-thought-bubble"></i>
-</div>
-<div>Wine drank: ${trackerItems.wine.value}
- <i class="mdi mdi-thought-bubble"></i>
-</div>
-<div>Chases initiated: ${trackerItems.chase.value}
-  <i class="mdi mdi-thought-bubble"></i>
-</div>
-<div>Total idea Created:${historicalCount}
-  <i class="mdi mdi-thought-bubble"></i>
-</div>
-</div>`
-  // leveler()
+  let trackBeer = document.getElementById("beer-value")
+  let trackIdea = document.getElementById("idea-value")
+  let trackFear = document.getElementById("fear-value")
+  let trackWine = document.getElementById("wine-value")
+  let trackChase = document.getElementById("chase-value")
+  let trackHistorical = document.getElementById("historical")
 
+  trackBeer.innerHTML = `<span> ${trackerItems.beer.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></span>`
+  trackIdea.innerHTML = `<span> ${trackerItems.idea.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></span>`
+  trackFear.innerHTML = `<span> ${trackerItems.fear.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></span>`
+  trackWine.innerHTML = `<span> ${trackerItems.wine.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></span>`
+  trackChase.innerHTML = `<span> ${trackerItems.chase.value} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></span>`
+  trackHistorical.innerHTML = `<span> ${historicalCount} <i class="mdi mdi-24px mdi-thought-bubble txt-lgt-blue"></i></span>`
 }
 // function leveler() {
 //   if (trackerItems.idea.value >= 50) {

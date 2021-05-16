@@ -1,12 +1,78 @@
+:root{
+  --medium-grn: #9dc249;
+  --wht: #dbe2cc;
+  --lgt-blue: #12b0c9;
+  --drk-grn: #569838;
+}
+
 .main-bg{
   background-image: url(https://rickandmortypod.com/wp-content/uploads/2018/11/cropped-RM_page-header_background1-3.png);
   object-fit: contain;
   background-repeat: no-repeat;
-  padding-top: 10rem;
+  padding-top: 20rem;
   padding-bottom: 10rem;
   z-index: 0;
 }
 .ship{
-  background-image: url(https://image.pngaaa.com/300/1232300-middle.png);
-  z-index: 1;
+  margin-left: 8rem;
+  margin-top: -12.5rem;
+}
+.terry{
+  width: 36rem;
+  height: 28rem;
+  transform: rotate(-9.7deg);
+  margin-left: -4rem;
+  margin-top: 12rem;
+}
+.morty{
+  height: 6rem;
+  margin-left: -6rem;
+  margin-top: 12rem;
+  transform: rotate(8.5deg);
+}
+.ship-position{
+  width: 38rem;
+  height: 14rem;
+  transform: rotate(-9deg);
+}
+.rick-position{
+  margin-left: 8em;
+  padding-top: 7rem;
+}
+
+.txt-grn{
+  color: var(--medium-grn);
+}
+.txt-wht{
+  color: var(--wht);
+  -webkit-text-stroke:  .15px var(--lgt-blue);
+}
+.txt-lgt-blue{
+  color: var(--lgt-blue);
+  -webkit-text-stroke:  .25px var(--medium-grn);
+
+}
+.bg-grn{
+  background-color: #569838;
+}
+
+h1,
+h3,
+div{
+  font-family: 'Covered By Your Grace', cursive;
+}
+.nav{
+  color: #9dc249;
+  font-size: 66px;
+  -webkit-text-stroke:  1.25px var(--lgt-blue);
+  background-color: transparent;
+}
+.nav-bar{
+  margin-top: -20rem;
+  margin-bottom: 0%;
+}
+.btns{
+  background-color: var(--lgt-blue);
+  width: 21vw;
+  height: 14vh;
 }
