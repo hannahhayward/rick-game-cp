@@ -1,0 +1,12 @@
+.main-bg{
+  background-image: url(https://rickandmortypod.com/wp-content/uploads/2018/11/cropped-RM_page-header_background1-3.png);
+  object-fit: contain;
+  background-repeat: no-repeat;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  z-index: 0;
+}
+.ship{
+  background-image: url(https://image.pngaaa.com/300/1232300-middle.png);
+  z-index: 1;
+}
