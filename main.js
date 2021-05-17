@@ -104,7 +104,7 @@ function scream() {
 }
 
 function chase() {
-  terrySound()
+  // terrySound()
   let showTerry = document.getElementById("terry")
   if (trackerItems.belch.value >= trackerItems.chase.price) {
     btns()
@@ -256,8 +256,8 @@ function swiggSound(){
   let audio = new Audio('https://sound.peal.io/ps/audios/000/000/533/original/Riggity.wav?1469744359')
   audio.play();
 }
-function terrySound(){
-  let audio = new Audio('https://www.101soundboards.com/storage/board_sounds_rendered/141101.mp3?md5=R5fOjpotDJz6loqWQkDmAg&expires=1621210931')
-  audio.play();
-}
+// function terrySound(){
+//   // let audio = new Audio('https://www.101soundboards.com/storage/board_sounds_rendered/141101.mp3?md5=R5fOjpotDJz6loqWQkDmAg&expires=1621210931')
+//   // audio.play();
+// }
 
